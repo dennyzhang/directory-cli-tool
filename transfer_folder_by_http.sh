@@ -10,16 +10,23 @@
 ## Read more: https://www.dennyzhang.com/transfer_cli
 ## --
 ## Created : <2017-08-28>
-## Updated: Time-stamp: <2017-08-28 20:29:09>
+## Updated: Time-stamp: <2017-08-28 20:35:00>
 ##-------------------------------------------------------------------
-folder_name=${1?}
+folder_full_path=${1?}
+max_download=${2:-"1"}
+max_days=${3:-"1"}
 
-tar_file_name="/tmp/$(basename "$folder_name").tar.gz"
+parent_folder_name="$(dirname "$folder_full_path")"
+folder_name="$(basename "$folder_full_path")"
+tar_file_name="/tmp/${folder_name}.tar.gz"
 
+cd "$parent_folder_name"
 echo "tar -zcvf $tar_file_name $folder_name"
 tar -zcvf "$tar_file_name" "$folder_name"
 
 echo "Upload $tar_file_name"
-curl -H "Max-Downloads: 1" -H "Max-Days: 1" \
-     --upload-file "$tar_file_name" "https://transfer.sh/$(basename "$folder_name").tar.gz"
+curl -H "Max-Downloads: $max_download" -H "Max-Days: $max_days" \
+     --upload-file "$tar_file_name" "https://transfer.sh/${folder_name}.tar.gz"
+
+echo ""
 ## File : transfer_folder_by_http.sh ends
