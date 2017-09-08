@@ -2,15 +2,15 @@
 ##-------------------------------------------------------------------
 ## @copyright 2017 DennyZhang.com
 ## Licensed under MIT
-## https://raw.githubusercontent.com/DennyZhang/devops_public/master/LICENSE
+## https://www.dennyzhang.com/wp-content/mit_license.txt
 ##
 ## File : transfer_file_by_http.sh
-## Author : Denny <denny@dennyzhang.com>
+## Author : Denny <contact@dennyzhang.com>
 ## Description :
 ## Read more: https://www.dennyzhang.com/transfer_cli
 ## --
 ## Created : <2017-08-28>
-## Updated: Time-stamp: <2017-08-28 20:48:08>
+## Updated: Time-stamp: <2017-09-07 21:35:14>
 ##-------------------------------------------------------------------
 function transfer_folder() {
     local transfer_full_path=${1?}
